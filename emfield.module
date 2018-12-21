@@ -710,10 +710,10 @@ function _emfield_handler_arg_provider($op, &$query, $argtype, $arg = '', $modul
       $query->add_where($table .'.'. $main_column['column'] ." = '%s'", $where);
       break;
     case 'link':
-      $provider = emfield_system_list($module,  $query->$main_column['column']);
+      $provider = emfield_system_list($module,  $query->{$main_column['column']});
       $info = emfield_include_invoke($module, $provider[$query]->name, 'info');
       $title = $info['name'];
-      return l($title, $arg .'/'. $query->$main_column['column']);
+      return l($title, $arg .'/'. $query->{$main_column['column']});
     case 'title':
       $provider = emfield_system_list($module,  $query);
       $info = emfield_include_invoke($module, $provider[$query]->name, 'info');
