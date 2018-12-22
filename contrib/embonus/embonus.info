@@ -3,9 +3,3 @@ description = Provides extra field information for embedded media fields.
 core = 6.x
 dependencies[] = emfield
 package = Media
-
-; Information added by Drupal 6 LTS vendors on 2018-12-22
-version = "6.x-2.8"
-core = "6.x"
-project = "emfield"
-datestamp = "1545508814"
