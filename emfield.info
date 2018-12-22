@@ -4,9 +4,3 @@ description = Provides an engine for modules to integrate various 3rd party cont
 core = 6.x
 dependencies[] = content
 package = CCK
-
-; Information added by Drupal 6 LTS vendors on 2018-12-22
-version = "6.x-1.28"
-core = "6.x"
-project = "emfield"
-datestamp = "1545508723"
