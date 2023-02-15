@@ -265,18 +265,17 @@ function _eminline_url_settings_form_submit($form, &$form_state) {
 }
 
 function _eminline_curry($func, $arity) {
-  return create_function('', "
-    \$args = func_get_args();
-    if(count(\$args) >= $arity)
-        return call_user_func_array('$func', \$args);
-    \$args = var_export(\$args, 1);
-    return create_function('','
-        \$a = func_get_args();
-        \$z = ' . \$args . ';
-        \$a = array_merge(\$z,\$a);
-        return call_user_func_array(\'$func\', \$a);
-    ');
-  ");
+  return function() use ($func, $arity) {
+    $args = func_get_args();
+    if (count($args) >= $arity) {
+      return call_user_func_array($func, $args);
+    }
+    return function() use ($func, $args) {
+      $a = func_get_args();
+      $a = array_merge($args, $a);
+      return call_user_func_array($func, $a);
+    };
+  };
 }
 
 function _eminline_default_filter_settings($type = 'video') {
